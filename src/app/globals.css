@@ -1,33 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
+@layer components {
+  .scrollbar-light::-webkit-scrollbar-thumb {
+    background: #d0d0d0;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  .scrollbar-light::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-thumb {
+    background: #080808;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-thumb:hover {
+    background: #0d0d0d;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+.animate-blink {
+  animation: blink 1s steps(5, start) infinite;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.animated-text span {
+  transition: opacity 0.1s linear;
+  opacity: 0;
+}
+
+.animated-text span.visible {
+  opacity: 1;
+}
+
+.faded {
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    9%,
+    rgba(2, 2, 2, 1) 100%
+  );
+}
+
+/* width */
+@media screen and (max-width: 640px) {
+  .page-scrollbar::-webkit-scrollbar {
+    width: 0px !important;
   }
+}
+
+.page-scrollbar::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+.page-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }

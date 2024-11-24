@@ -1,0 +1,31 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "domody.com v1",
+      "date": "2024 May",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "tags": ["Next.js", "TailwindCSS"],
+      "link": "/",
+      "repo": "/domody/v1"
+    },
+    {
+      "id": 2,
+      "title": "ProDo",
+      "date": "2023 Dec",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "tags": ["Next.js", "Firebase", "Github"],
+      "link": "https://www.facebook.com/",
+      "repo": "/domody/v1"
+    },
+    {
+      "id": 3,
+      "title": "aeriui",
+      "date": "2024 July",
+      "para": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "tags": ["Next.js", "npm", "TailwindCSS"],
+      "link": "/",
+      "repo": "/domody/v1"
+    }
+  ]
+}
