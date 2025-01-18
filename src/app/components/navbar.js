@@ -29,8 +29,7 @@ const Navbar = () => {
     <>
       <div className="w-screen fixed z-50 top-0 left-0 py-4">
         <div
-          className="container h-20 flex justify-between items-center py-6 mx-auto rounded-xl bg-[#d0d0d0]/50 dark:bg-[#0f0f0f]/50"
-          style={{ backdropFilter: 'blur(5px)' }}
+          className="container h-12 flex justify-between items-center mx-auto rounded-xl bg-[#d0d0d0]/50 dark:bg-[#0f0f0f]/50 backdrop-blur-sm"
         >
           <div className="h-full text-nero-800 dark:text-white flex items-center">
             <Disc />
@@ -43,14 +42,14 @@ const Navbar = () => {
               <p>CONTACT</p>
             </div>
             <div className="h-full flex justify-start items-center space-x-3">
-              <div className="bg-nero-300 dark:bg-nero-800 rounded-full flex justify-center items-center aspect-square h-full p-2">
-                <Search className="" />
+              <div className="bg-nero-300 dark:bg-nero-800 rounded-full flex justify-center items-center aspect-square p-1.5">
+                <Search className="w-4 h-4" />
               </div>
               <div
-                className="bg-nero-300 dark:bg-nero-800 rounded-full flex justify-center items-center aspect-square h-full p-2 cursor-pointer"
+                className="bg-nero-300 dark:bg-nero-800 rounded-full flex justify-center items-center aspect-square p-1.5 cursor-pointer"
                 onClick={toggleTheme}
               >
-                {theme === 'light' ? <Sun /> : <Moon />}
+                {theme === 'light' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
               </div>
               <div className="md:hidden bg-nero-300 dark:bg-nero-800 rounded-full flex justify-center items-center aspect-square h-full p-2">
                 <Menu className="" />
