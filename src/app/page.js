@@ -2,13 +2,10 @@
 import { Inter } from 'next/font/google';
 import { useRef, useState, useEffect } from 'react';
 import {
-  ArrowRight,
-  Twitter,
   Instagram,
-  Linkedin,
   GitHub,
-  Codepen,
 } from 'react-feather';
+import { IconBrandDiscord } from '@tabler/icons-react';
 import { Code, Book, Mail } from 'react-feather';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
@@ -29,7 +26,7 @@ export default function Home() {
   const projectsValRef = useRef(null);
   const aboutMe = projects.about_me.data;
 
-  // Image file dir based on theme
+  const [bgImage, setBgImage] = useState(null);
 
   const [theme, setTheme] = useState(
     typeof window !== 'undefined' ? localStorage.theme : 'light',
@@ -40,8 +37,8 @@ export default function Home() {
       setTheme(localStorage.theme || 'light');
     };
 
-    updateTheme(); // Set initial theme
-    window.addEventListener('storage', updateTheme); // Listen for theme changes
+    updateTheme();
+    window.addEventListener('storage', updateTheme);
 
     return () => {
       window.removeEventListener('storage', updateTheme);
@@ -74,68 +71,78 @@ export default function Home() {
     setLoading(false);
   }, []);
 
+  useEffect(() => {
+    const loadImage = async () => {
+      const image = await import(`@/app/assets/gradients-light/${rand}.png`);
+      setBgImage(image.default);
+    };
+
+    loadImage();
+  }, [rand]);
+
   return (
     <div
-      className="w-screen h-screen overflow-y-scroll overflow-x-hidden page-scrollbar scrollbar-light dark:scrollbar-dark"
+      className="page-scrollbar scrollbar-light dark:scrollbar-dark h-screen w-screen overflow-x-hidden overflow-y-scroll"
       // style={{
       //   background: `radial-gradient(150px at ${mousePos.x}px ${mousePos.y}px, rgba(16, 70, 110, 0.10), transparent 80%)`,
       // }}
     >
       {loading ? (
-        <div className="flex items-center justify-center h-full">
-          <p>Loading...</p> {/* Add a spinner or text */}
+        <div className="flex h-full items-center justify-center bg-nero-950">
+          <p className="text-nero-50">Loading...</p>{' '}
+          {/* Add a spinner or text */}
         </div>
       ) : (
         <>
           <Navbar />
-          <main className="flex flex-col items-center font-normal justify-between pt-44 text-nero-800 dark:text-nero-200">
-            <div className="w-full container">
-              <div className="flex justify-start items-start relative w-full">
-                <div className="flex flex-col justify-start items-start space-y-6 w-full select-none">
+          <main className="flex flex-col items-center justify-between pt-44 font-normal text-nero-800 dark:text-nero-200">
+            <div className="container w-full">
+              <div className="relative flex w-full items-start justify-start">
+                <div className="flex w-full flex-col items-start justify-start space-y-6">
                   {/* <div className=" py-2 pl-8 pr-5 bg-lime-400/15 rounded-full text-sm flex justify-center items-center">
                     See Projects
                     <ArrowRight className="h-4 ml-2" />
                 </div> */}
-                  <div className="flex justify-start items-center space-x-4">
-                    <Twitter />
+                  <div className="flex items-center justify-start space-x-4">
                     <Instagram />
-                    <Linkedin />
                     <GitHub />
-                    <Codepen />
+                    <IconBrandDiscord />
                   </div>
                   <h1 className="text-7xl font-bold">Dom Ody</h1>
                   {/* <h2 className="text-xl font-medium">Full-stack Developer</h2> */}
-                  <div className="mt-8 flex justify-start items-center space-x-8">
-                    <Book className="h-4 cursor-pointer hover:scale-125 transition-all" />
-                    <Code className="h-5 cursor-pointer hover:scale-125 transition-all" />
-                    <Mail className="h-4 cursor-pointer hover:scale-125 transition-all" />
+                  <div className="mt-8 flex items-center justify-start space-x-8">
+                    <Book className="h-4 cursor-pointer transition-all hover:scale-125" />
+                    <Code className="h-5 cursor-pointer transition-all hover:scale-125" />
+                    <Mail className="h-4 cursor-pointer transition-all hover:scale-125" />
                   </div>
                 </div>
-
-                <Image
-                  className="absolute lg:-top-12 left-0 transfrom -translate-x-1/2 -z-10 lg:h-[50rem] select-none"
-                  src={require(`./assets/gradients-${theme}/${rand}.png`)}
-                  alt=""
-                />
+                {bgImage && (
+                  <Image
+                    className="transfrom absolute left-0 -z-10 -translate-x-1/2 lg:-top-12 lg:h-[50rem]"
+                    src={bgImage}
+                    alt=""
+                    width={1600}
+                    height={rand == 2 ? 1300 : 1200}
+                  />
+                )}
               </div>
-
-              <div className="mt-24 w-full pb-16 flex flex-col justify-start items-start border-b border-neutral-400 dark:border-neutral-950">
+              <div className="mt-24 flex w-full flex-col items-start justify-start border-b border-neutral-400 pb-16 dark:border-neutral-950">
                 <div className="">
-                  <p className="font-semibold text-lg">About Me</p>
+                  <p className="text-lg font-semibold">About Me</p>
                 </div>
-                <div className="w-full h-full py-4 flex flex-col items-start justify-start">
+                <div className="flex h-full w-full flex-col items-start justify-start py-4">
                   <AnimatedText loading={loading} text={aboutMe} />
                 </div>
               </div>
 
-              <div className="mt-24 w-full flex-col justify-start items-start">
-                <div className="flex justify-between items-center">
-                  <p className="font-semibold text-lg">Projects</p>
+              <div className="mt-24 w-full flex-col items-start justify-start">
+                <div className="flex items-center justify-between">
+                  <p className="text-lg font-semibold">Projects</p>
                   <p className="text-sm text-nero-700">
                     1 -{' '}
-                    <span className="font-semibold ">
+                    <span className="font-semibold">
                       <input
-                        className="w-12 py-0.5 text-center rounded-md bg-black/5 dark:bg-white/5 focus:outline-none focus:border focus:border-nero-300 dark:focus:border-nero-700 placeholder:text-nero-700"
+                        className="w-12 rounded-md bg-black/5 py-0.5 text-center placeholder:text-nero-700 focus:border focus:border-nero-300 focus:outline-none dark:bg-white/5 dark:focus:border-nero-700"
                         min={1}
                         max={projectsLength}
                         name=""
@@ -149,7 +156,7 @@ export default function Home() {
                     of {projectsLength}
                   </p>
                 </div>
-                <div className="w-full h-full  projects-scrollbar mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6 group">
+                <div className="projects-scrollbar group mt-8 grid h-full w-full grid-cols-1 gap-6 sm:grid-cols-2">
                   {projects.projects
                     .slice(0, projectsCount)
                     .map((project, index) => (

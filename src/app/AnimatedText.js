@@ -37,7 +37,7 @@ const AnimatedText = ({ text, loading }) => {
         if (count === text.length) {
           clearInterval(interval);
         }
-      }, 10);
+      }, 30);
 
       return () => clearInterval(interval);
     }

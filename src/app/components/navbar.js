@@ -36,15 +36,12 @@ const Navbar = () => {
           </div>
           <div className="h-full flex justify-start items-center text-nero-800 dark:text-white">
             <div className="hidden md:flex h-full justify-start items-center text-sm font-medium space-x-8 mr-8">
-              <a href="/">HOME</a>
+              <a href="/">Home</a>
               {/* <a>ABOUT ME</a>
               <p>PROJECTS</p> */}
-              <p>CONTACT</p>
+              <p>Contact</p>
             </div>
             <div className="h-full flex justify-start items-center space-x-3">
-              <div className="bg-nero-300 dark:bg-nero-800 rounded-full flex justify-center items-center aspect-square p-1.5">
-                <Search className="w-4 h-4" />
-              </div>
               <div
                 className="bg-nero-300 dark:bg-nero-800 rounded-full flex justify-center items-center aspect-square p-1.5 cursor-pointer"
                 onClick={toggleTheme}
