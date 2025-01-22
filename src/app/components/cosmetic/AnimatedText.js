@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import './globals.css';
+import '@/app/styles/globals.css';
 
 const AnimatedText = ({ text, loading }) => {
   const [visibleLetters, setVisibleLetters] = useState(
@@ -37,7 +37,7 @@ const AnimatedText = ({ text, loading }) => {
         if (count === text.length) {
           clearInterval(interval);
         }
-      }, 30);
+      }, 45);
 
       return () => clearInterval(interval);
     }

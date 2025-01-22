@@ -1,23 +1,23 @@
 'use client';
-import { Inter } from 'next/font/google';
 import { useRef, useState, useEffect } from 'react';
-import {
-  Instagram,
-  GitHub,
-} from 'react-feather';
-import { IconBrandDiscord } from '@tabler/icons-react';
-import { Code, Book, Mail } from 'react-feather';
-import Navbar from './components/navbar';
-import Footer from './components/footer';
-import Container from './components/container';
-import AnimatedText from './AnimatedText';
-import projects from './projects.json';
-import toggleTheme from './components/navbar';
+import { useRedirect } from '../hooks/useRedirect';
 import Image from 'next/image';
 
-const inter = Inter({ subsets: ['latin'] });
+import { Instagram, GitHub } from 'react-feather';
+import { IconBrandDiscord } from '@tabler/icons-react';
+import { Code, Book, Mail } from 'react-feather';
+
+import { IconButton } from '../components/cosmetic/IconButtons';
+import Navbar from '../components/navigation/Navbar';
+import Footer from '../components/navigation/Footer';
+import ProjectCard from '../components/information/ProjectCard';
+import AnimatedText from '../components/cosmetic/AnimatedText';
+
+import projects from '@/app/project-data.json';
 
 export default function Home() {
+  const { redirected, runRedirect } = useRedirect();
+
   const [loading, setLoading] = useState(true);
   const [rand, setRand] = useState(1);
 
@@ -81,8 +81,8 @@ export default function Home() {
   }, [rand]);
 
   return (
-    <div
-      className="page-scrollbar scrollbar-light dark:scrollbar-dark h-screen w-screen overflow-x-hidden overflow-y-scroll"
+    <main
+      className={`page-scrollbar scrollbar-light dark:scrollbar-dark h-screen w-screen overflow-x-hidden overflow-y-scroll transition-opacity duration-300 ${redirected ? 'opacity-0' : 'opacity-100'} `}
       // style={{
       //   background: `radial-gradient(150px at ${mousePos.x}px ${mousePos.y}px, rgba(16, 70, 110, 0.10), transparent 80%)`,
       // }}
@@ -94,8 +94,8 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <Navbar />
-          <main className="flex flex-col items-center justify-between pt-44 font-normal text-nero-800 dark:text-nero-200">
+          <Navbar redirected={redirected} runRedirect={runRedirect} />
+          <div className="flex flex-col items-center justify-between pt-44 font-normal text-nero-800 dark:text-nero-200">
             <div className="container w-full">
               <div className="relative flex w-full items-start justify-start">
                 <div className="flex w-full flex-col items-start justify-start space-y-6">
@@ -104,9 +104,17 @@ export default function Home() {
                     <ArrowRight className="h-4 ml-2" />
                 </div> */}
                   <div className="flex items-center justify-start space-x-4">
-                    <Instagram />
-                    <GitHub />
-                    <IconBrandDiscord />
+                    <IconButton link="https://www.instagram.com/dom.ody/">
+                      <Instagram />
+                    </IconButton>
+
+                    <IconButton link="https://github.com/domody">
+                      <GitHub />
+                    </IconButton>
+
+                    <IconButton link="https://discordapp.com/users/1074284797217734717">
+                      <IconBrandDiscord />
+                    </IconButton>
                   </div>
                   <h1 className="text-7xl font-bold">Dom Ody</h1>
                   {/* <h2 className="text-xl font-medium">Full-stack Developer</h2> */}
@@ -118,11 +126,10 @@ export default function Home() {
                 </div>
                 {bgImage && (
                   <Image
-                    className="transfrom absolute left-0 -z-10 -translate-x-1/2 lg:-top-12 lg:h-[50rem]"
+                    className="transfrom absolute left-0 -z-10 -translate-x-1/2 lg:-top-48 lg:h-[50rem]"
                     src={bgImage}
                     alt=""
-                    width={1600}
-                    height={rand == 2 ? 1300 : 1200}
+                    layout="intrinsic"
                   />
                 )}
               </div>
@@ -160,13 +167,16 @@ export default function Home() {
                   {projects.projects
                     .slice(0, projectsCount)
                     .map((project, index) => (
-                      <Container
+                      <ProjectCard
                         key={project.id}
                         date={project.date}
                         title={project.title}
                         text={project.para}
                         tags={project.tags}
                         link={project.link}
+                        repo={project.repo}
+                        redirected={redirected}
+                        runRedirect={runRedirect}
                       />
                     ))}
                 </div>
@@ -179,9 +189,9 @@ export default function Home() {
             </div>
 
             <Footer />
-          </main>{' '}
+          </div>
         </>
       )}
-    </div>
+    </main>
   );
 }

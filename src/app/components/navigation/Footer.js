@@ -1,4 +1,4 @@
-import '../globals.css';
+import '@/app/styles/globals.css';
 import { Menu } from 'react-feather';
 import { Sun } from 'react-feather';
 import { Moon } from 'react-feather';

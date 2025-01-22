@@ -1,4 +1,4 @@
-import './globals.css';
+import '@/app/styles/globals.css';
 import React from 'react';
 import { Inter } from 'next/font/google';
 // import useRadialBlur from './radialBlur';
@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="bg-neutral-200 dark:bg-nero-950">
       <body
-        className={`overflow-x-hidden  ${inter.className} overflow-y-hidden`}
+        className={`overflow-x-hidden  ${inter.className} overflow-y-hidden selection:bg-nero-300 dark:selection:bg-nero-900`}
       >
         {children}
       </body>
