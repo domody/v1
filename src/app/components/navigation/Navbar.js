@@ -65,8 +65,8 @@ const Navbar = ({ redirected, runRedirect }) => {
                   <Moon className="h-4 w-4" />
                 )}
               </div>
-              <div className="flex aspect-square h-full items-center justify-center rounded-full bg-nero-300 p-2 md:hidden dark:bg-nero-800">
-                <Menu className="" />
+              <div className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-nero-300 p-1.5 dark:bg-nero-800">
+                <Menu className="h-4 w-4" />
               </div>
             </div>
           </div>
