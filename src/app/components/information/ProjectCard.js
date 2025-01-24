@@ -81,10 +81,10 @@ export default ProjectCard;
 
 {
   /* <div
-className="group/container absolute animate-fade transition-all hover:!scale-[1.02] hover:!opacity-100 group-hover:scale-[0.99] group-hover:opacity-50"
+className="group/container absolute animate-fade transition-all hover:scale-[1.02]! hover:opacity-100! group-hover:scale-[0.99] group-hover:opacity-50"
 onClick={openProjectDetails}
 >
-<div className="z-20 flex cursor-pointer flex-col items-start justify-start rounded-lg bg-black/[0.02] p-6 text-nero-800 blur-none transition-all hover:bg-neutral-300 dark:bg-white/[0.005] dark:text-nero-200 hover:dark:bg-[#040404]">
+<div className="z-20 flex cursor-pointer flex-col items-start justify-start rounded-lg bg-black/[0.02] p-6 text-nero-800 blur-none transition-all hover:bg-neutral-300 dark:bg-white/[0.005] dark:text-nero-200 dark:hover:bg-[#040404]">
   <div className="flex w-full items-start justify-between">
     <div className="flex flex-col items-start justify-start">
       <h1 className="text-xl font-semibold">{title}</h1>
