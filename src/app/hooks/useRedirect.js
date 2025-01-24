@@ -3,20 +3,15 @@ import { useState } from 'react';
 function useRedirect() {
   const [redirected, setRedirected] = useState(false);
 
-  function runRedirect(link, newPage = true, internal = false) {
+  function runRedirect(link, internal = false) {
     setRedirected(true);
     setTimeout(() => {
-      if (newPage) {
+      if (!internal) {
         window.open(link, '_blank', 'noopener,noreferrer');
-      }
-      else {
+        setRedirected(false);
+      } else {
         window.location.href = link;
       }
-
-      if (internal == false) {
-        setRedirected(false); 
-      }
-
     }, 250);
   }
 

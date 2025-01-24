@@ -72,17 +72,14 @@ export default function Home() {
 
   useEffect(() => {
     const loadImage = async () => {
-      if (rand != null)
-      {
+      if (rand != null) {
         const image = await import(`@/app/assets/gradients-light/${rand}.png`);
         setBgImage(image.default);
       }
-
     };
 
     loadImage();
   }, [rand]);
-
 
   // {Math.floor((new Date() - new Date("2007-02-06")) / (1000 * 60 * 60 * 24 * 365.25))}
   return (
@@ -121,7 +118,7 @@ export default function Home() {
                       <IconBrandDiscord />
                     </IconButton>
                   </div>
-                  <h1 className="text-6xl sm:text-7xl font-bold">Dom Ody</h1>
+                  <h1 className="text-6xl font-bold sm:text-7xl">Dom Ody</h1>
                   {/* <h2 className="text-xl font-medium">Developer</h2> */}
                   <div className="mt-8 flex items-center justify-start space-x-8">
                     <Book className="h-4 cursor-pointer transition-all hover:scale-125" />
