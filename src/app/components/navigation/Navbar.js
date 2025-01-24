@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import { Menu } from 'react-feather';
 import { Sun } from 'react-feather';
 import { Moon } from 'react-feather';
-import { Disc } from 'react-feather';
+
+import data from '@/app/project-data.json';
 
 const Navbar = ({ redirected, runRedirect }) => {
   const [theme, setTheme] = useState(
@@ -26,7 +27,7 @@ const Navbar = ({ redirected, runRedirect }) => {
 
   const handleLinkClick = (link) => {
     if (link) {
-      runRedirect(link, false);
+      runRedirect(link, false, true);
     }
   };
 
@@ -39,20 +40,18 @@ const Navbar = ({ redirected, runRedirect }) => {
           </div>
           <div className="flex h-full items-center justify-start text-nero-800 dark:text-white">
             <div className="mr-8 hidden h-full items-center justify-start space-x-8 text-sm font-medium md:flex">
-              <p
-                onClick={() => handleLinkClick('/')}
-                className="cursor-pointer"
-              >
-                Home
-              </p>
-              {/* <a>ABOUT ME</a>
-              <p>PROJECTS</p> */}
-              <p
-                onClick={() => handleLinkClick('/contact')}
-                className="cursor-pointer"
-              >
-                Contact
-              </p>
+              {data.links.length > 0 && data.links.map((link) => {
+                return (
+                  <p
+                  key={link.id}
+                  onClick={() => handleLinkClick(link.link)}
+                  className="cursor-pointer"
+                >
+                  {link.title}
+                </p>
+                )
+
+              })}
             </div>
             <div className="flex h-full items-center justify-start space-x-3">
               <div
@@ -65,7 +64,7 @@ const Navbar = ({ redirected, runRedirect }) => {
                   <Moon className="h-4 w-4" />
                 )}
               </div>
-              <div className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-nero-300 p-1.5 dark:bg-nero-800">
+              <div className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-nero-300 p-1.5 dark:bg-nero-800 sm:hidden">
                 <Menu className="h-4 w-4" />
               </div>
             </div>

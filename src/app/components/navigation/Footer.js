@@ -22,7 +22,7 @@ const Footer = () => {
   return (
     <>
       <div className="container mt-24 py-8 border-t border-neutral-400 dark:border-neutral-950 flex justify-center items-center space-x-2 text-sm font-semibold text-nero-600">
-        <h1>Dom Ody &#169; 2024</h1>
+        <h1>Dom Ody &#169; {new Date().getFullYear()}</h1>
         <h1>&#x2022;</h1>
         <div className="cursor-pointer flex">
           <h1>Have a great</h1>

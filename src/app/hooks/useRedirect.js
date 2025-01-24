@@ -3,7 +3,7 @@ import { useState } from 'react';
 function useRedirect() {
   const [redirected, setRedirected] = useState(false);
 
-  function runRedirect(link, newPage = true) {
+  function runRedirect(link, newPage = true, internal = false) {
     setRedirected(true);
     setTimeout(() => {
       if (newPage) {
@@ -12,7 +12,11 @@ function useRedirect() {
       else {
         window.location.href = link;
       }
-      // setRedirected(false); // Reset after redirection if needed
+
+      if (internal == false) {
+        setRedirected(false); 
+      }
+
     }, 250);
   }
 

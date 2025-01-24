@@ -13,18 +13,17 @@ import Footer from '../components/navigation/Footer';
 import ProjectCard from '../components/information/ProjectCard';
 import AnimatedText from '../components/cosmetic/AnimatedText';
 
-import projects from '@/app/project-data.json';
+import data from '@/app/project-data.json';
 
 export default function Home() {
   const { redirected, runRedirect } = useRedirect();
 
   const [loading, setLoading] = useState(true);
-  const [rand, setRand] = useState(1);
+  const [rand, setRand] = useState(null);
 
-  const projectsLength = projects.projects.length;
-  var [projectsCount, setProjectsCount] = useState(projectsLength);
+  var [projectsCount, setProjectsCount] = useState(data.projects.length);
   const projectsValRef = useRef(null);
-  const aboutMe = projects.about_me.data;
+  const aboutMe = data.about_me.data;
 
   const [bgImage, setBgImage] = useState(null);
 
@@ -45,13 +44,13 @@ export default function Home() {
     };
   }, []);
 
-  if (projectsCount > projectsLength) {
-    projectsCount = projectsLength;
+  if (projectsCount > data.projects.length) {
+    projectsCount = data.projects.length;
   }
 
   const handleChange = (event) => {
     var value = event.target.value;
-    const max = projectsLength;
+    const max = data.projects.length;
 
     setTimeout(() => {
       if (value > max) {
@@ -73,13 +72,19 @@ export default function Home() {
 
   useEffect(() => {
     const loadImage = async () => {
-      const image = await import(`@/app/assets/gradients-light/${rand}.png`);
-      setBgImage(image.default);
+      if (rand != null)
+      {
+        const image = await import(`@/app/assets/gradients-light/${rand}.png`);
+        setBgImage(image.default);
+      }
+
     };
 
     loadImage();
   }, [rand]);
 
+
+  // {Math.floor((new Date() - new Date("2007-02-06")) / (1000 * 60 * 60 * 24 * 365.25))}
   return (
     <main
       className={`page-scrollbar scrollbar-light dark:scrollbar-dark h-screen w-screen overflow-x-hidden overflow-y-scroll transition-opacity duration-300 ${redirected ? 'opacity-0' : 'opacity-100'} `}
@@ -87,7 +92,7 @@ export default function Home() {
       //   background: `radial-gradient(150px at ${mousePos.x}px ${mousePos.y}px, rgba(16, 70, 110, 0.10), transparent 80%)`,
       // }}
     >
-      {loading ? (
+      {loading && bgImage ? (
         <div className="flex h-full items-center justify-center bg-nero-950">
           <p className="text-nero-50">Loading...</p>{' '}
           {/* Add a spinner or text */}
@@ -116,8 +121,8 @@ export default function Home() {
                       <IconBrandDiscord />
                     </IconButton>
                   </div>
-                  <h1 className="text-7xl font-bold">Dom Ody</h1>
-                  {/* <h2 className="text-xl font-medium">Full-stack Developer</h2> */}
+                  <h1 className="text-6xl sm:text-7xl font-bold">Dom Ody</h1>
+                  {/* <h2 className="text-xl font-medium">Developer</h2> */}
                   <div className="mt-8 flex items-center justify-start space-x-8">
                     <Book className="h-4 cursor-pointer transition-all hover:scale-125" />
                     <Code className="h-5 cursor-pointer transition-all hover:scale-125" />
@@ -126,7 +131,7 @@ export default function Home() {
                 </div>
                 {bgImage && (
                   <Image
-                    className="transfrom absolute left-0 -z-10 -translate-x-1/2 lg:-top-48 lg:h-[50rem]"
+                    className="transfrom absolute left-0 -z-10 -translate-x-1/2 md:-top-72 lg:h-[50rem]"
                     src={bgImage}
                     alt=""
                     layout="intrinsic"
@@ -151,7 +156,7 @@ export default function Home() {
                       <input
                         className="w-12 rounded-md bg-black/5 py-0.5 text-center placeholder:text-nero-700 focus:border focus:border-nero-300 focus:outline-none dark:bg-white/5 dark:focus:border-nero-700"
                         min={1}
-                        max={projectsLength}
+                        max={data.projects.length}
                         name=""
                         id="projectsVal"
                         ref={projectsValRef}
@@ -160,15 +165,15 @@ export default function Home() {
                         onChange={handleChange}
                       />
                     </span>{' '}
-                    of {projectsLength}
+                    of {data.projects.length}
                   </p>
                 </div>
                 <div className="projects-scrollbar group mt-8 grid h-full w-full grid-cols-1 gap-6 sm:grid-cols-2">
-                  {projects.projects
+                  {data.projects
                     .slice(0, projectsCount)
                     .map((project, index) => (
                       <ProjectCard
-                        key={project.id}
+                        key={index}
                         date={project.date}
                         title={project.title}
                         text={project.para}

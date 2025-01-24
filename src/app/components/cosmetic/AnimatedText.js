@@ -7,9 +7,17 @@ const AnimatedText = ({ text, loading }) => {
     Array(text.length).fill(false),
   );
   const [visibleCount, setVisibleCount] = useState(0);
+  const [pageReady, setPageReady] = useState(false) 
+  
+  useEffect(() => {
+    setTimeout(() => {
+      setPageReady(true)
+    }, 750);
+  }, [])
+
 
   useEffect(() => {
-    if (loading == false) {
+    if (pageReady == true) {
       const interval = setInterval(() => {
         const newVisibleLetters = [...visibleLetters];
         let count = visibleCount;
@@ -37,11 +45,11 @@ const AnimatedText = ({ text, loading }) => {
         if (count === text.length) {
           clearInterval(interval);
         }
-      }, 45);
+      }, 50);
 
       return () => clearInterval(interval);
     }
-  }, [text, visibleLetters, visibleCount, loading]);
+  }, [text, visibleLetters, visibleCount, pageReady]);
 
   return (
     <div className={`animated-text tracking-wide font-base`}>

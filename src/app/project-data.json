@@ -1,7 +1,19 @@
-{
+{ 
   "about_me": {
     "data": "17, Developer."
   },
+  "links": [
+    {
+      "id": 1,
+      "title": "Home",
+      "link": "/"
+    },
+    {
+      "id": 2,
+      "title": "Contact",
+      "link": "/contact"
+    }
+  ],
   "projects": [
     {
       "id": 1,
