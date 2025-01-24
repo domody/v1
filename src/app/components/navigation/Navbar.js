@@ -5,7 +5,7 @@ import { Menu } from 'react-feather';
 import { Sun } from 'react-feather';
 import { Moon } from 'react-feather';
 
-import data from '@/app/project-data.json';
+import projectData from '@/app/project-data.json';
 
 const Navbar = ({ redirected, runRedirect }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -49,8 +49,8 @@ const Navbar = ({ redirected, runRedirect }) => {
           </div>
           <div className="flex h-full items-center justify-start text-nero-800 dark:text-white">
             <div className="mr-8 hidden h-full items-center justify-start space-x-8 text-sm font-medium md:flex">
-              {data.links.length > 0 &&
-                data.links.map((link) => {
+              {projectData.links.nav.length > 0 &&
+                projectData.links.nav.map((link) => {
                   return (
                     <p
                       key={link.id}

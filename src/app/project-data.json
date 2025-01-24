@@ -2,18 +2,32 @@
   "about_me": {
     "data": "17, Developer."
   },
-  "links": [
-    {
-      "id": 1,
-      "title": "Home",
-      "link": "/"
-    },
-    {
-      "id": 2,
-      "title": "Contact",
-      "link": "/contact"
-    }
-  ],
+  "links": {
+    "nav": [
+      {
+        "id": 1,
+        "title": "Home",
+        "link": "/"
+      },
+      {
+        "id": 2,
+        "title": "Contact",
+        "link": "/contact"
+      }
+    ],
+    "contact": [
+      {
+        "id": 1,
+        "title": "discord",
+        "contact": "gomiooo"
+      },
+      {
+        "id": 2,
+        "title": "mail",
+        "contact": "domody11@gmail.com"
+      }
+    ]
+  },
   "projects": [
     {
       "id": 1,

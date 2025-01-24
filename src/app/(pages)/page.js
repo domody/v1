@@ -168,21 +168,27 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="projects-scrollbar group mt-8 grid h-full w-full grid-cols-1 gap-6 sm:grid-cols-2">
-                  {data.projects
-                    .slice(0, projectsCount)
-                    .map((project, index) => (
-                      <ProjectCard
-                        key={index}
-                        date={project.date}
-                        title={project.title}
-                        text={project.content}
-                        tags={project.tags}
-                        link={project.link}
-                        repo={project.repo}
-                        redirected={redirected}
-                        runRedirect={runRedirect}
-                      />
-                    ))}
+                  {data.projects.slice(0, projectsCount).length > 0 ? (
+                    data.projects
+                      .slice(0, projectsCount)
+                      .map((project, index) => (
+                        <ProjectCard
+                          key={index}
+                          date={project.date}
+                          title={project.title}
+                          text={project.content}
+                          tags={project.tags}
+                          link={project.link}
+                          repo={project.repo}
+                          redirected={redirected}
+                          runRedirect={runRedirect}
+                        />
+                      ))
+                  ) : (
+                    <p className="mx-auto pb-2 pt-16 sm:col-span-2 dark:text-nero-400">
+                      :&#93;
+                    </p>
+                  )}
                 </div>
                 {/* <div className="w-full flex justify-center items-center mt-8">
               <button className="mt-2 px-4 pt-5 pb-3 bg-white/[0.02] rounded-full flex flex-col justify-center items-center text-xs">
