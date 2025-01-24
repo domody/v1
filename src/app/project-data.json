@@ -19,7 +19,7 @@
       "id": 1,
       "title": "santai.gg",
       "date": "2025 Feb",
-      "para": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
       "tags": ["Next.js", "TailwindCSS", "Collaborative"],
       "link": "https://www.santai.gg/",
       "repo": "/santaigg"
@@ -28,7 +28,7 @@
       "id": 2,
       "title": "Matom",
       "date": "Current",
-      "para": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
       "tags": ["In Progress", "Next.js", "Firebase", "Collaborative"],
       "link": null,
       "repo": "/domody/matom"
@@ -37,7 +37,7 @@
       "id": 3,
       "title": "domody.com v1",
       "date": "2024 May",
-      "para": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
       "tags": ["Next.js", "TailwindCSS"],
       "link": "/",
       "repo": "/domody/v1"

@@ -7,14 +7,13 @@ const AnimatedText = ({ text, loading }) => {
     Array(text.length).fill(false),
   );
   const [visibleCount, setVisibleCount] = useState(0);
-  const [pageReady, setPageReady] = useState(false) 
-  
+  const [pageReady, setPageReady] = useState(false);
+
   useEffect(() => {
     setTimeout(() => {
-      setPageReady(true)
+      setPageReady(true);
     }, 750);
-  }, [])
-
+  }, []);
 
   useEffect(() => {
     if (pageReady == true) {
@@ -52,7 +51,7 @@ const AnimatedText = ({ text, loading }) => {
   }, [text, visibleLetters, visibleCount, pageReady]);
 
   return (
-    <div className={`animated-text tracking-wide font-base`}>
+    <div className={`animated-text font-base tracking-wide`}>
       {text.split('').map((letter, index) => (
         <span key={index} className={visibleLetters[index] ? 'visible' : ''}>
           {letter}

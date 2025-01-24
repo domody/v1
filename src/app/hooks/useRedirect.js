@@ -12,10 +12,10 @@ function useRedirect() {
       } else {
         window.location.href = link;
       }
-    }, 250);
+    }, 300);
   }
 
-  return { redirected, runRedirect };
+  return { redirected, setRedirected, runRedirect };
 }
 
 export { useRedirect };

@@ -41,12 +41,12 @@ const ProjectCard = ({
             <div className="flex items-center justify-center gap-x-2">
               <GitHub
                 strokeWidth={2.5}
-                className="peer/icons size-4 origin-center text-nero-400 transition-all hover:size-5 hover:text-nero-600 dark:hover:text-nero-100"
+                className="peer/icons size-4 text-nero-400 transition-all hover:size-5 hover:text-nero-600 dark:hover:text-nero-100"
                 onClick={() => handleRedirect(`https://github.com${repo}`)}
               />
               <Link
                 strokeWidth={2.5}
-                className="peer/icons size-4 origin-center text-nero-400 transition-all hover:size-5 hover:text-nero-600 dark:hover:text-nero-100"
+                className="peer/icons size-4 text-nero-400 transition-all hover:size-5 hover:text-nero-600 dark:hover:text-nero-100"
                 onClick={() => handleRedirect(link)}
               />
               <Maximize2 className="peer/icons size-4 text-nero-400 transition-all group-hover/container:scale-125 group-hover/container:text-nero-600 peer-hover/icons:scale-100 dark:group-hover/container:text-nero-100" />
@@ -60,7 +60,7 @@ const ProjectCard = ({
           <div className="mt-6 flex w-full flex-wrap items-start justify-start">
             {tags.map((tag) => (
               <div
-                className={`mr-1.5 mt-2 flex items-start justify-end rounded-full px-3 py-2 ${tag === 'In Progress' ? 'bg-amber-700/50 dark:bg-amber-950/50' : 'bg-teal-700/50 dark:bg-teal-950/50'}`}
+                className={`mr-1.5 mt-2 flex items-center justify-center rounded-full px-3 py-2 ${tag === 'In Progress' ? 'bg-amber-700/50 dark:bg-amber-950/50' : 'bg-teal-700/50 dark:bg-teal-950/50'}`}
                 key={tag}
               >
                 <p

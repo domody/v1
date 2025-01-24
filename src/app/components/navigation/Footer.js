@@ -21,14 +21,14 @@ const Footer = () => {
 
   return (
     <>
-      <div className="container mt-24 py-8 border-t border-neutral-400 dark:border-neutral-950 flex justify-center items-center space-x-2 text-sm font-semibold text-nero-600">
+      <div className="container mt-24 flex items-center justify-center space-x-2 border-t border-neutral-400 py-8 text-sm font-semibold text-nero-600 dark:border-neutral-950">
         <h1>Dom Ody &#169; {new Date().getFullYear()}</h1>
         <h1>&#x2022;</h1>
-        <div className="cursor-pointer flex">
+        <div className="flex cursor-pointer">
           <h1>Have a great</h1>
-          <h1 className="cursor-pointer group relative inline-block ml-1">
+          <h1 className="group relative ml-1 inline-block cursor-pointer">
             {currentDayOfWeek}!
-            <span className="absolute inset-x-0 bottom-0 h-0.5 bg-teal-400 transform origin-right scale-x-0 transition-transform duration-250 ease-out group-hover:scale-x-100"></span>
+            <span className="duration-250 absolute inset-x-0 bottom-0 h-0.5 origin-right scale-x-0 transform bg-teal-400 transition-transform ease-out group-hover:scale-x-100"></span>
           </h1>
         </div>
         <h1>&#x2022;</h1>

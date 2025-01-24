@@ -15,6 +15,8 @@ import AnimatedText from '../components/cosmetic/AnimatedText';
 
 import data from '@/app/project-data.json';
 
+import { usePathname } from 'next/navigation';
+
 export default function Home() {
   const { redirected, runRedirect } = useRedirect();
 
@@ -173,7 +175,7 @@ export default function Home() {
                         key={index}
                         date={project.date}
                         title={project.title}
-                        text={project.para}
+                        text={project.content}
                         tags={project.tags}
                         link={project.link}
                         repo={project.repo}
