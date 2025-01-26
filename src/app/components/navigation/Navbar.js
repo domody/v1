@@ -1,3 +1,4 @@
+'use client';
 import '@/app/styles/globals.css';
 
 import { useEffect, useState } from 'react';
