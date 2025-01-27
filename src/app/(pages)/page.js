@@ -85,6 +85,14 @@ export default function Home() {
 
   // {Math.floor((new Date() - new Date("2007-02-06")) / (1000 * 60 * 60 * 24 * 365.25))}
   return (
+    <main
+    className={`page-scrollbar scrollbar-light dark:scrollbar-dark h-screen min-h-screen w-screen overflow-x-hidden overflow-y-scroll transition-opacity duration-300 ${redirected ? 'opacity-0' : 'opacity-100'} `}
+    // style={{
+    //   background: `radial-gradient(150px at ${mousePos.x}px ${mousePos.y}px, rgba(16, 70, 110, 0.10), transparent 80%)`,
+    // }}
+  >
+    <Navbar redirected={redirected} runRedirect={runRedirect} />
+    <div className="flex h-full flex-col items-center justify-between pt-32 font-normal text-nero-800 dark:text-nero-200">
     <div className="container w-full">
       <div className="relative flex w-full items-start justify-start">
         <div className="flex w-full flex-col items-start justify-start space-y-6">
@@ -182,5 +190,8 @@ export default function Home() {
             </div> */}
       </div>
     </div>
+    <Footer />
+      </div>
+    </main>
   );
 }

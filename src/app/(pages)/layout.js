@@ -21,19 +21,7 @@ export default function RootLayout({ children }) {
       <body
         className={`overflow-x-hidden ${inter.className} fade-in overflow-y-hidden text-nero-800 selection:bg-nero-300 dark:text-nero-200 dark:selection:bg-nero-900`}
       >
-        <main
-          className={`page-scrollbar scrollbar-light dark:scrollbar-dark h-screen w-screen overflow-x-hidden overflow-y-scroll transition-opacity duration-300 ${redirected ? 'opacity-0' : 'opacity-100'} `}
-          // style={{
-          //   background: `radial-gradient(150px at ${mousePos.x}px ${mousePos.y}px, rgba(16, 70, 110, 0.10), transparent 80%)`,
-          // }}
-        >
-          <div className="flex min-h-screen flex-col items-center justify-between pt-44 font-normal">
-            <Navbar redirected={redirected} runRedirect={runRedirect} />
-
-            {children}
-            <Footer />
-          </div>
-        </main>
+          {children}
       </body>
     </html>
   );

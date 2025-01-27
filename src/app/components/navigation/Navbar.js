@@ -44,7 +44,7 @@ const Navbar = ({ redirected, runRedirect }) => {
   return (
     <>
       <div className="fixed left-0 top-0 z-50 w-screen py-4">
-        <div className="backdrop-blur-xs container mx-auto flex h-12 items-center justify-between rounded-xl bg-[#d0d0d0]/50 dark:bg-[#0f0f0f]/50">
+        <div className="backdrop-blur container mx-auto flex h-12 items-center justify-between rounded-xl bg-[#d0d0d0]/50 dark:bg-[#0f0f0f]/50">
           <div className="flex h-full items-center text-nero-800 dark:text-white">
             {/* <Disc /> */}
           </div>
