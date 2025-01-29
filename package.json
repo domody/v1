@@ -12,6 +12,7 @@
     "@tabler/icons-react": "^3.28.1",
     "gray-matter": "^4.0.3",
     "next": "15.1.5",
+    "next-mdx-remote-client": "^2.0.0",
     "prismjs": "^1.29.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
