@@ -53,7 +53,7 @@ const ProjectCard = ({
             </div>
           </div>
 
-          <p className="font-base mt-4 line-clamp-4 text-sm text-nero-500 dark:text-nero-400">
+          <p className="font-base mt-4 line-clamp-4 text-sm text-nero-600 dark:text-nero-400">
             {text}
           </p>
 

@@ -22,7 +22,7 @@ const code = `function MyComponent(props) {
 export default function Page() {
   const { slug } = useParams();
   const { redirected, runRedirect } = useRedirect();
-
+  
   const decodedSlug = decodeURIComponent(slug);
 
   const project = projectData.projects.find(
@@ -85,6 +85,7 @@ export default function Page() {
           </div>
           <div className="mt-4 flex flex-col w-full gap-y-4">
             <p>This is an example code block with a <span className='underline cursor-pointer'  onClick={() => handleRedirect(project.link, String(project.link) === '/')}>link</span>.</p>
+            <p>I still need to update the code block highlighting for light mode, it doesnt match and fails contrast test to an unbeliavable extent.</p>
             <CodeBlock title={'app.js'} code={code}/>
           </div>
         </div>

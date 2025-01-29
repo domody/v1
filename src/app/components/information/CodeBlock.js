@@ -1,7 +1,7 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight, oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Copy, Check } from 'react-feather';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 const CodeBlock = ({code, lang = 'js', title = null}) => {
     const [copied, setCopied] = useState()
 
@@ -14,6 +14,32 @@ const CodeBlock = ({code, lang = 'js', title = null}) => {
             setCopied(false)
         }, 1500);
     }
+
+    // const [theme, setTheme] = useState(
+    // typeof window !== 'undefined' ? localStorage.theme : 'light',
+    // );
+
+    // useEffect(() => {
+    // setInterval(() => {
+    //     const newTheme = localStorage.theme
+    //     if (newTheme === 'dark') {
+    //         setTheme('dark')
+    //     } else {
+    //         setTheme('light')
+    //     }
+    // }, 5);
+    // })
+
+    // useEffect(() => {
+    //     console.log('hello')
+    //     const newTheme = localStorage.theme
+    //     if (newTheme === 'dark') {
+    //         setTheme('dark')
+    //     } else {
+    //         setTheme('light')
+    //     }
+    //   }, []);
+
     return  (
         <div className="flex flex-col w-full">
             {
@@ -38,8 +64,9 @@ const CodeBlock = ({code, lang = 'js', title = null}) => {
             <Copy className={`absolute top-4 right-4 size-4 ${title ? "hidden" : ""}`} />
             <SyntaxHighlighter
                 language={lang}
+                // style={theme == 'light' ? oneLight : oneDark}
                 style={oneDark}
-                className={`w-full !bg-transparent [&>*]:!bg-transparent !p-4 `}
+                className={`w-full !bg-transparent [&>*]:!bg-transparent !p-4`}
                 customStyle={{ margin: 0 }}
             >
                 {code}

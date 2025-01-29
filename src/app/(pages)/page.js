@@ -29,22 +29,22 @@ export default function Home() {
 
   const [bgImage, setBgImage] = useState(null);
 
-  const [theme, setTheme] = useState(
-    typeof window !== 'undefined' ? localStorage.theme : 'light',
-  );
+  // const [theme, setTheme] = useState(
+  //   typeof window !== 'undefined' ? localStorage.theme : 'light',
+  // );
 
-  useEffect(() => {
-    const updateTheme = () => {
-      setTheme(localStorage.theme || 'light');
-    };
+  // useEffect(() => {
+  //   const updateTheme = () => {
+  //     setTheme(localStorage.theme || 'light');
+  //   };
 
-    updateTheme();
-    window.addEventListener('storage', updateTheme);
+  //   updateTheme();
+  //   window.addEventListener('storage', updateTheme);
 
-    return () => {
-      window.removeEventListener('storage', updateTheme);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('storage', updateTheme);
+  //   };
+  // }, []);
 
   if (projectsCount > data.projects.length) {
     projectsCount = data.projects.length;
@@ -123,14 +123,14 @@ export default function Home() {
         </div>
         {bgImage && (
           <Image
-            className="transfrom absolute left-0 -z-10 -translate-x-1/2 md:-top-72 lg:h-[50rem]"
+            className="transfrom absolute left-1/4 sm:left-0 -z-10 -translate-x-1/2 -top-56 lg:-top-72 !max-w-[55rem] !h-auto md:!max-w-full"
             src={bgImage}
             alt=""
             layout="intrinsic"
           />
         )}
       </div>
-      <div className="mt-24 flex w-full flex-col items-start justify-start border-b border-neutral-400 pb-16 dark:border-neutral-950">
+      <div className="mt-24 flex w-full flex-col items-start justify-start border-b border-neutral-500/30 pb-16 dark:border-neutral-900/30">
         <div className="">
           <p className="text-lg font-semibold">About Me</p>
         </div>

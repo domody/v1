@@ -30,9 +30,9 @@ const Footer = () => {
 
   return (
     <>
-      <div className="container mt-24 flex items-center justify-center space-x-2 border-t border-neutral-400 py-8 text-sm font-semibold text-nero-600 dark:border-neutral-950">
+      <div className="container mt-24 flex flex-col sm:flex-row items-center justify-center gap-x-2 border-t border-neutral-400 py-8 text-sm font-semibold text-nero-600 dark:border-neutral-950 gap-y-2 sm:gap-y-0">
         <p>Dom Ody &#169; {new Date().getFullYear()}</p>
-        <p>&#x2022;</p>
+        <p className='hidden sm:block'>&#x2022;</p>
         <div className="flex cursor-pointer">
           <p>Have a great</p>
           <p className="group relative ml-1 inline-block cursor-pointer">
@@ -40,8 +40,8 @@ const Footer = () => {
             <span className="duration-250 absolute inset-x-0 bottom-0 h-0.5 origin-right scale-x-0 transform bg-teal-400 transition-transform ease-out group-hover:scale-x-100"></span>
           </p>
         </div>
-        <p>&#x2022;</p>
-        <p onClick={() => runRedirect('/contact', true)}>Contact</p>
+        <p className='hidden sm:block'>&#x2022;</p>
+        <p className='cursor-pointer hover:text-nero-800 dark:hover:text-nero-300 transition-all' onClick={() => runRedirect('/contact', true)}>Contact</p>
       </div>
     </>
   );
