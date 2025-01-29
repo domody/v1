@@ -69,7 +69,7 @@ export default function Page() {
               />
             </div>
           </div>
-          <div className="flex">
+          <div className="flex flex-wrap">
             {project.tags.map((tag) => (
               <div
                 className={`mr-1.5 mt-2 flex items-center justify-center rounded-full px-3 py-2 ${tag === 'In Progress' ? 'bg-amber-700/50 dark:bg-amber-950/50' : 'bg-teal-700/50 dark:bg-teal-950/50'}`}
