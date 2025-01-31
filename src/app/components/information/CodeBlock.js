@@ -31,7 +31,6 @@ const CodeBlock = ({code, lang = 'js', title = null}) => {
     // })
 
     // useEffect(() => {
-    //     console.log('hello')
     //     const newTheme = localStorage.theme
     //     if (newTheme === 'dark') {
     //         setTheme('dark')

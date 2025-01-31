@@ -49,7 +49,7 @@
     },
     {
       "id": 3,
-      "title": "domody.com v1",
+      "title": "domody.com",
       "date": "2024 May",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
       "tags": ["Next.js", "TailwindCSS"],
