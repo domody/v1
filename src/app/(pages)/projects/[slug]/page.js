@@ -6,10 +6,12 @@ import Navbar from '@/app/components/navigation/Navbar';
 import Footer from '@/app/components/navigation/Footer';
 
 import projectData from '@/app/project-data.json';
-import { GitHub, Link } from 'react-feather';
+import { GitHub, Link, ArrowUpRight } from 'react-feather';
 import { useState, useEffect } from 'react';
 import { CodeBlock } from '@/app/components/information/CodeBlock';
 import { parseMarkdown } from '@/app/utils/parseMD';
+
+import { InternalLink, ExternalLink } from '@/app/components/navigation/Links';
 
 export default function Page() {
   const { slug } = useParams();
@@ -48,7 +50,7 @@ export default function Page() {
   function parseLines(md) {
     const lines = md.split('\n');
     return lines.map((line, index) => {
-      return parseMarkdown(line, index);
+      return parseMarkdown(line, index, runRedirect);
     });
   }
 
@@ -75,7 +77,13 @@ export default function Page() {
             Projects &rsaquo;
           </p>
           <div className="flex items-center gap-x-4">
-            <h2 className="text-3xl font-semibold">{project.title}</h2>
+            <ExternalLink
+              link={project.link}
+              runRedirect={runRedirect}
+              className="text-3xl font-semibold"
+            >
+              {project.title}
+            </ExternalLink>
             <div className="flex gap-x-2">
               <GitHub
                 strokeWidth={2.5}
@@ -84,13 +92,13 @@ export default function Page() {
                   handleRedirect(`https://github.com${project.repo}`)
                 }
               />
-              <Link
+              {/* <Link
                 strokeWidth={2.5}
                 className="size-[26px] cursor-pointer transition-all hover:scale-105 dark:stroke-nero-400 dark:hover:stroke-nero-50"
                 onClick={() =>
                   handleRedirect(project.link, String(project.link) === '/')
                 }
-              />
+              /> */}
             </div>
           </div>
           <div className="flex flex-wrap">
@@ -108,7 +116,6 @@ export default function Page() {
             ))}
           </div>
           <div className="mt-4 flex w-full flex-col gap-y-4">
-            {/* {htmlContent} */}
             {htmlContent ? (
               <>{htmlContent}</>
             ) : (

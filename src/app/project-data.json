@@ -1,6 +1,6 @@
 {
   "about_me": {
-    "data": "17, Developer."
+    "data": "18, Developer."
   },
   "links": {
     "nav": [
@@ -18,13 +18,13 @@
     "contact": [
       {
         "id": 1,
-        "title": "discord",
-        "contact": "gomiooo"
+        "title": "mail",
+        "contact": "domody11@gmail.com"
       },
       {
         "id": 2,
-        "title": "mail",
-        "contact": "domody11@gmail.com"
+        "title": "discord",
+        "contact": "gomiooo"
       }
     ]
   },
@@ -43,7 +43,13 @@
       "title": "Matom",
       "date": "Current",
       "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "tags": ["In Progress", "Next.js", "Typescript", "Firebase", "Collaborative"],
+      "tags": [
+        "In Progress",
+        "Next.js",
+        "Typescript",
+        "Firebase",
+        "Collaborative"
+      ],
       "link": null,
       "repo": "/domody/matom"
     },

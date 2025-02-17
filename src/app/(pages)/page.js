@@ -123,7 +123,7 @@ export default function Home() {
         </div>
         {bgImage && (
           <Image
-            className="transfrom absolute left-1/4 sm:left-0 -z-10 -translate-x-1/2 -top-56 lg:-top-72 !max-w-[55rem] !h-auto md:!max-w-full"
+            className={`transfrom absolute left-1/4 sm:left-0 -z-10  -top-56 lg:-top-72 !max-w-[55rem] !h-auto md:!max-w-full ${rand == 1 || rand == 2 || rand == 4 || rand == 5 ? "-translate-x-[63%] sm:-translate-x-1/2" : "-translate-x-1/2"}`}
             src={bgImage}
             alt=""
             layout="intrinsic"

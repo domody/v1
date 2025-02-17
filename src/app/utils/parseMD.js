@@ -1,26 +1,24 @@
 import { CodeBlock } from '../components/information/CodeBlock';
-
+import { ExternalLink } from '../components/navigation/Links';
 let isInCodeBlock = false;
 let codeBlockLanguage = '';
 let codeBlockContent = [];
 
 const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
 
-export function parseMarkdown(line, index) {
-  // Do not return empty lines unless in code block
+export function parseMarkdown(line, index, runRedirect) {
+  // Codeblocks
   if (line.trim().length == 0 && !isInCodeBlock) {
     return null;
   }
 
-  // Detect opening of a code block
   if (line.trim().match(/^```(\w*)$/) && !isInCodeBlock) {
     isInCodeBlock = true;
     codeBlockLanguage = line.replace(/^```/, '');
     codeBlockContent = [];
-    return null; // Do not render this line
+    return null;
   }
 
-  // Detect closing of a code block
   if (line.trim().match(/^```$/) && isInCodeBlock) {
     isInCodeBlock = false;
     const finalCodeBlock = (
@@ -35,10 +33,9 @@ export function parseMarkdown(line, index) {
     return finalCodeBlock;
   }
 
-  // Accumulate code lines if inside a code block
   if (isInCodeBlock) {
     codeBlockContent.push(line);
-    return null; // Do not render code lines separately
+    return null;
   }
 
   // Headings 1 -> 3
@@ -90,18 +87,53 @@ export function parseMarkdown(line, index) {
 
   // Link
   if (linkRegex.test(line)) {
-    const newLine = line.replace(linkRegex, (match, text, url) => {
-      return `<a href="${url}" class="underline hover:text-nero-50 hover:font-medium transition-all" target="_blank">${text}</a>`;
+    const parts = [];
+    let lastIndex = 0;
+
+    line.replace(linkRegex, (match, text, url, offset) => {
+      // Push the text before the link
+      parts.push(line.substring(lastIndex, offset));
+
+      // Push the ExternalLink component
+      parts.push(
+        <ExternalLink
+          key={`${index}-${offset}`}
+          link={url}
+          runRedirect={runRedirect}
+        >
+          {text}
+        </ExternalLink>,
+      );
+
+      lastIndex = offset + match.length;
     });
 
-    return <p key={index} dangerouslySetInnerHTML={{ __html: newLine }} />;
-  }
+    // Push any remaining text after the last link
+    parts.push(line.substring(lastIndex));
 
+    for (const part of parts) {
+      console.log(typeof part, part);
+    }
+
+    return (
+      <div className="flex flex-wrap gap-x-1 text-wrap" key={index}>
+        {parts.map((part, i) =>
+          typeof part === 'string'
+            ? part.split(' ').map((word, j) => (
+                <span key={`${i}-${j}`} className="inline-block">
+                  {word}{' '}
+                </span>
+              ))
+            : part,
+        )}
+      </div>
+    );
+  }
   // Horizontal Rule
   if (line.match(/\-\-\-/)) {
     return <hr key={index} />;
   }
 
   // Default for normal text
-  return <p key={index}>{line}</p>;
+  return <div key={index}>{line}</div>;
 }
