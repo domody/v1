@@ -1,7 +1,7 @@
 import '@/app/styles/globals.css';
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Minimize2, Maximize2, Link, GitHub } from 'react-feather';
+import { Maximize2, Link, GitHub } from 'react-feather';
 
 const ProjectCard = ({
   date,
@@ -13,12 +13,6 @@ const ProjectCard = ({
   redirected,
   runRedirect,
 }) => {
-  const shouldOpenInNewTab = link !== '/';
-  const [open, setOpen] = useState(false);
-  const toggleOpen = () => {
-    setOpen(!open);
-  };
-
   const handleRedirect = (_link, internal = false) => {
     if (_link) {
       runRedirect(_link, internal);
@@ -41,12 +35,18 @@ const ProjectCard = ({
               <GitHub
                 strokeWidth={2.5}
                 className="peer/icons size-4 text-nero-400 transition-all hover:size-5 hover:text-nero-600 dark:hover:text-nero-100"
-                onClick={() => handleRedirect(`https://github.com${repo}`)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleRedirect(`https://github.com${repo}`);
+                }}
               />
               <Link
                 strokeWidth={2.5}
                 className="peer/icons size-4 text-nero-400 transition-all hover:size-5 hover:text-nero-600 dark:hover:text-nero-100"
-                onClick={() => handleRedirect(link)}
+                onClick={() => {
+                  e.stopPropagation();
+                  handleRedirect(link);
+                }}
               />
               <Maximize2 className="peer/icons size-4 text-nero-400 transition-all group-hover/container:scale-125 group-hover/container:text-nero-600 peer-hover/icons:scale-100 dark:group-hover/container:text-nero-100" />
             </div>

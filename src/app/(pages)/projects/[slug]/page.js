@@ -87,7 +87,7 @@ export default function Page() {
             <div className="flex gap-x-2">
               <GitHub
                 strokeWidth={2.5}
-                className="size-[26px] cursor-pointer transition-all hover:scale-105 dark:stroke-nero-400 dark:hover:stroke-nero-50"
+                className="size-6 cursor-pointer transition-all hover:scale-105 dark:stroke-nero-400 dark:hover:stroke-nero-50"
                 onClick={() =>
                   handleRedirect(`https://github.com${project.repo}`)
                 }
@@ -125,7 +125,7 @@ export default function Page() {
             )}
           </div>
         </div>
-        <Footer />
+        <Footer redirected={redirected} runRedirect={runRedirect} />
       </div>
     </main>
   );

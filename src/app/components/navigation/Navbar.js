@@ -5,13 +5,14 @@ import { useEffect, useState, useRef } from 'react';
 import { Menu } from 'react-feather';
 import { Sun } from 'react-feather';
 import { Moon } from 'react-feather';
+import { Terminal } from 'react-feather';
 
 import projectData from '@/app/project-data.json';
 
 const Navbar = ({ redirected, runRedirect }) => {
   const [isMounted, setIsMounted] = useState(false);
   const [theme, setTheme] = useState(
-    typeof window !== 'undefined' ? localStorage.theme : 'light',
+    typeof window !== 'undefined' ? localStorage.theme : 'dark',
   );
   const [menuOpened, setMenuOpened] = useState(false);
   const menuDropdownRef = useRef(null);
@@ -69,7 +70,12 @@ const Navbar = ({ redirected, runRedirect }) => {
       <div className="fixed left-0 top-0 z-50 w-screen px-2 py-4 sm:px-0">
         <div className="container mx-auto flex h-12 items-center justify-between rounded-xl bg-[#d0d0d0]/50 backdrop-blur dark:bg-[#0f0f0f]/50">
           <div className="flex h-full items-center text-nero-800 dark:text-white">
-            {/* <Disc /> */}
+            <div
+              className="flex cursor-pointer items-center justify-center rounded bg-black/5 p-1.5 dark:bg-white/5"
+              onClick={() => handleLinkClick('/')}
+            >
+              <Terminal className="size-4" />
+            </div>
           </div>
           <div className="flex h-full items-center justify-start text-nero-800 dark:text-white">
             <div className="mr-8 hidden h-full items-center justify-start space-x-8 text-sm font-medium sm:flex">
@@ -88,7 +94,7 @@ const Navbar = ({ redirected, runRedirect }) => {
             </div>
             <div className="flex h-full items-center justify-start space-x-3">
               <div
-                className="flex aspect-square cursor-pointer items-center justify-center rounded-full bg-nero-300/50 p-1.5 dark:bg-nero-800/50"
+                className="flex aspect-square cursor-pointer items-center justify-center rounded bg-black/5 p-1.5 dark:bg-white/5"
                 onClick={toggleTheme}
               >
                 {theme === 'light' ? (
@@ -98,7 +104,7 @@ const Navbar = ({ redirected, runRedirect }) => {
                 )}
               </div>
               <div
-                className={`flex aspect-square cursor-pointer items-center justify-center rounded-full bg-nero-300/50 p-1.5 sm:hidden dark:bg-nero-800/50 ${menuOpened ? 'blur-[1px]' : ''}`}
+                className={`flex aspect-square cursor-pointer items-center justify-center rounded bg-black/5 p-1.5 sm:hidden dark:bg-white/5 ${menuOpened ? 'blur-[1px]' : ''}`}
                 onClick={toggleMenuOpen}
               >
                 <Menu className="h-4 w-4" />

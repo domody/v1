@@ -3,7 +3,7 @@ import { getPageContent } from '@/app/lib/markdown';
 
 export async function GET(request, context) {
   const { params } = await context;
-  const slug = params.slug.toLowerCase();
+  const slug = (await params).slug.toLowerCase();
 
   try {
     const content = await getPageContent(slug);

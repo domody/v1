@@ -31,33 +31,27 @@
   "projects": [
     {
       "id": 1,
+      "title": "aeriui",
+      "date": "2025 May",
+      "content": "A customizable and accessible React component library designed for speed and simplicity.",
+      "tags": ["In Progress", "React", "Typescript", "TailwindCSS", "npm"],
+      "link": "https://aeriui.vercel.app",
+      "repo": "/domody/aeriuiv2"
+    },
+    {
+      "id": 2,
       "title": "santai.gg",
       "date": "2025 Feb",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "content": "A competitive stat tracker for Spectre Divide, used by the game's top players.",
       "tags": ["Next.js", "Typescript", "TailwindCSS", "Collaborative"],
       "link": "https://www.santai.gg/",
       "repo": "/santaigg"
     },
     {
-      "id": 2,
-      "title": "Matom",
-      "date": "Current",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "tags": [
-        "In Progress",
-        "Next.js",
-        "Typescript",
-        "Firebase",
-        "Collaborative"
-      ],
-      "link": null,
-      "repo": "/domody/matom"
-    },
-    {
       "id": 3,
-      "title": "domody.com",
+      "title": "domody",
       "date": "2024 May",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi error in provident tenetur quo quibusdam eos laborum explicabo possimus ipsam, esse harum quas illo officia a sunt deserunt voluptate voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "content": "My personal portfolio site featuring selected work and contact details.",
       "tags": ["Next.js", "TailwindCSS"],
       "link": "/",
       "repo": "/domody/v1"

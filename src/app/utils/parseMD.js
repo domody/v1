@@ -7,6 +7,7 @@ let codeBlockContent = [];
 const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
 
 export function parseMarkdown(line, index, runRedirect) {
+  console.log(index);
   // Codeblocks
   if (line.trim().length == 0 && !isInCodeBlock) {
     return null;
@@ -38,6 +39,21 @@ export function parseMarkdown(line, index, runRedirect) {
     return null;
   }
 
+  // Images
+  const imageMatch = line.trim().match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+  if (imageMatch) {
+    const alt = imageMatch[1];
+    const src = imageMatch[2];
+    return (
+      <img
+        key={index}
+        className="w-full overflow-hidden rounded-lg border border-nero-200/25 dark:border-nero-500/25"
+        src={src}
+        alt={alt}
+      />
+    );
+  }
+
   // Headings 1 -> 3
   if (line.match(/^# (.*)/)) {
     return (
@@ -54,6 +70,7 @@ export function parseMarkdown(line, index, runRedirect) {
       </h2>
     );
   }
+
   if (line.match(/^### (.*)/)) {
     return (
       <h3 className="text-xl font-semibold" key={index}>
@@ -62,13 +79,30 @@ export function parseMarkdown(line, index, runRedirect) {
     );
   }
 
-  // Bold Text
-  if (line.match(/\*\*(.*)\*\*/)) {
-    const new_line = parseMarkdown(line.replace(/\*\*(.*?)\*\*/, '$1'), index);
-
+  if (line.match(/^#### (.*)/)) {
     return (
-      <strong key={index}>{final_line.replace(/\*\*(.*?)\*\*/, '$1')}</strong>
+      <h3 className="text-lg font-semibold" key={index}>
+        {line.replace(/^#### /, '')}
+      </h3>
     );
+  }
+
+  // Bold Text
+  if (line.includes('**')) {
+    const match = line.match(/\*\*(.*?)\*\*/);
+
+    if (match) {
+      const [fullMatch, boldText] = match;
+      const [before, after] = line.split(fullMatch);
+
+      return (
+        <div className="">
+          {parseMarkdown(before, `${index}.before`, runRedirect)}
+          <strong key={index}>{boldText}</strong>{' '}
+          {parseMarkdown(after, `${index}.after`, runRedirect)}
+        </div>
+      );
+    }
   }
 
   // Italic Text
@@ -91,10 +125,8 @@ export function parseMarkdown(line, index, runRedirect) {
     let lastIndex = 0;
 
     line.replace(linkRegex, (match, text, url, offset) => {
-      // Push the text before the link
       parts.push(line.substring(lastIndex, offset));
 
-      // Push the ExternalLink component
       parts.push(
         <ExternalLink
           key={`${index}-${offset}`}
@@ -108,12 +140,7 @@ export function parseMarkdown(line, index, runRedirect) {
       lastIndex = offset + match.length;
     });
 
-    // Push any remaining text after the last link
     parts.push(line.substring(lastIndex));
-
-    for (const part of parts) {
-      console.log(typeof part, part);
-    }
 
     return (
       <div className="flex flex-wrap gap-x-1 text-wrap" key={index}>
@@ -129,9 +156,10 @@ export function parseMarkdown(line, index, runRedirect) {
       </div>
     );
   }
+
   // Horizontal Rule
   if (line.match(/\-\-\-/)) {
-    return <hr key={index} />;
+    return <hr className="my-8" key={index} />;
   }
 
   // Default for normal text
