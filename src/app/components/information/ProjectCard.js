@@ -13,6 +13,7 @@ const ProjectCard = ({
   redirected,
   runRedirect,
 }) => {
+
   const handleRedirect = (_link, internal = false) => {
     if (_link) {
       runRedirect(_link, internal);
@@ -43,7 +44,7 @@ const ProjectCard = ({
               <Link
                 strokeWidth={2.5}
                 className="peer/icons size-4 text-nero-400 transition-all hover:size-5 hover:text-nero-600 dark:hover:text-nero-100"
-                onClick={() => {
+                onClick={(e) => {
                   e.stopPropagation();
                   handleRedirect(link);
                 }}

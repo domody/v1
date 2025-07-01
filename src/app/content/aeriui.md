@@ -2,7 +2,7 @@ aeri-ui is a free, open-source React component library built using React, Tailwi
 
 The library is a work in progress and will undergo continuous development and refinement. While it's not feature-compolete, the current state is stable and usable, making it suitable to be included in real-world projects.
 
-Inspired by (shadcn/ui)[https://ui.shadcn.com], this project is not a fork or a replacement but rather a learning-driven implementation built from scratch. Working on aeri-ui has allowed me to deepend my understanding componenet encapsulation, theme design, client/server rendering tradeoffs, and automated tooling workflows. 
+Inspired by [shadcn/ui](https://ui.shadcn.com), this project is not a fork or a replacement but rather a learning-driven implementation built from scratch. Working on aeri-ui has allowed me to deepend my understanding componenet encapsulation, theme design, client/server rendering tradeoffs, and automated tooling workflows. 
 
 ---
 
