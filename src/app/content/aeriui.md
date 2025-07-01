@@ -6,6 +6,14 @@ Inspired by [shadcn/ui](https://ui.shadcn.com), this project is not a fork or a 
 
 ---
 
+### Ongoing Transition to Storybook
+
+*Note: aeri-ui is currently undergoing a full migration to Storybook for improved component previews and testing. During this transition, some components may have unaddressed bugs or missing features. Rest assured that many of these bugs have already been noticed and fixed behind-the-scenes, and these will be publicly resolved as part of the Storybook rollout.*
+
+This migration is a key step toward improving documentation, interactivity, and long-term maintainability.
+
+---
+
 ### Core Technologies
 
  - React - All components are built using ForwardRef components with hooks and idiomatic patterns.
