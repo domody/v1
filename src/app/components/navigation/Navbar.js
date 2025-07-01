@@ -70,12 +70,12 @@ const Navbar = ({ redirected, runRedirect }) => {
       <div className="fixed left-0 top-0 z-50 w-screen px-2 py-4 sm:px-0">
         <div className="container mx-auto flex h-12 items-center justify-between rounded-xl bg-[#d0d0d0]/50 backdrop-blur dark:bg-[#0f0f0f]/50">
           <div className="flex h-full items-center text-nero-800 dark:text-white">
-            <div
+            <button
               className="flex cursor-pointer items-center justify-center rounded bg-black/5 p-1.5 dark:bg-white/5"
               onClick={() => handleLinkClick('/')}
             >
               <Terminal className="size-4" />
-            </div>
+            </button>
           </div>
           <div className="flex h-full items-center justify-start text-nero-800 dark:text-white">
             <div className="mr-8 hidden h-full items-center justify-start space-x-8 text-sm font-medium sm:flex">
@@ -93,7 +93,7 @@ const Navbar = ({ redirected, runRedirect }) => {
                 })}
             </div>
             <div className="flex h-full items-center justify-start space-x-3">
-              <div
+              <button
                 className="flex aspect-square cursor-pointer items-center justify-center rounded bg-black/5 p-1.5 dark:bg-white/5"
                 onClick={toggleTheme}
               >
@@ -102,13 +102,13 @@ const Navbar = ({ redirected, runRedirect }) => {
                 ) : (
                   <Moon className="h-4 w-4" />
                 )}
-              </div>
-              <div
-                className={`flex aspect-square cursor-pointer items-center justify-center rounded bg-black/5 p-1.5 sm:hidden dark:bg-white/5 ${menuOpened ? 'blur-[1px]' : ''}`}
+              </button>
+              <button
+                className={`flex aspect-square cursor-pointer items-center justify-center rounded bg-black/5 p-1.5 sm:hidden dark:bg-white/5 ${menuOpened ? 'blur-[0.5px]' : ''}`}
                 onClick={toggleMenuOpen}
               >
                 <Menu className="h-4 w-4" />
-              </div>
+              </button>
             </div>
           </div>
         </div>
